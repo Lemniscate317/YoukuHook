@@ -31,6 +31,46 @@ public class MainHook implements IXposedHookLoadPackage {
 
                     ClassLoader classLoader = ((Context) param.args[0]).getClassLoader();
 
+                    //isvip
+                    Class<?> fClazz = classLoader.loadClass("com.youku.player.a.f");
+
+                    if (fClazz != null) {
+                        XposedHelpers.findAndHookMethod(fClazz, "isVip", new XC_MethodHook() {
+                            @Override
+                            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                                super.afterHookedMethod(param);
+                                param.setResult(true);
+                            }
+                        });
+                    }
+
+                    //mid ad
+                    Class<?> xadsdk_e_cClazz = classLoader.loadClass("com.xadsdk.e.c");
+
+                    if (xadsdk_e_cClazz != null) {
+                        XposedHelpers.findAndHookMethod(xadsdk_e_cClazz, "getAdvItem", new XC_MethodHook() {
+                            @Override
+                            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                                super.afterHookedMethod(param);
+                                param.setResult(null);
+                            }
+                        });
+                    }
+
+                    //mid ad fail
+                    Class<?> xadsdk_aClazz = classLoader.loadClass("com.xadsdk.b");
+
+                    if (xadsdk_aClazz != null) {
+                        XposedHelpers.findAndHookMethod(xadsdk_aClazz, "MU", String.class, new XC_MethodHook() {
+                            @Override
+                            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                                super.beforeHookedMethod(param);
+                                param.args[0] = "";
+                            }
+                        });
+                    }
+
+                    //ad
                     Class<?> videoInfoClazz = classLoader.loadClass("com.youku.upsplayer.module.VideoInfo");
 
                     if (videoInfoClazz != null) {
@@ -43,6 +83,7 @@ public class MainHook implements IXposedHookLoadPackage {
                         });
                     }
 
+                    //ssl socket factory
                     Class<?> cClazz = classLoader.loadClass("com.youku.upsplayer.a.c");
                     Class<?> connectionClazz = classLoader.loadClass("java.net.HttpURLConnection");
                     Class<?> urlClazz = classLoader.loadClass("java.net.URL");
