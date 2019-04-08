@@ -44,32 +44,6 @@ public class MainHook implements IXposedHookLoadPackage {
                         });
                     }
 
-                    //mid ad
-                    Class<?> xadsdk_e_cClazz = classLoader.loadClass("com.xadsdk.e.c");
-
-                    if (xadsdk_e_cClazz != null) {
-                        XposedHelpers.findAndHookMethod(xadsdk_e_cClazz, "getAdvItem", new XC_MethodHook() {
-                            @Override
-                            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                                super.afterHookedMethod(param);
-                                param.setResult(null);
-                            }
-                        });
-                    }
-
-                    //mid ad fail
-                    Class<?> xadsdk_aClazz = classLoader.loadClass("com.xadsdk.b");
-
-                    if (xadsdk_aClazz != null) {
-                        XposedHelpers.findAndHookMethod(xadsdk_aClazz, "MU", String.class, new XC_MethodHook() {
-                            @Override
-                            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-                                super.beforeHookedMethod(param);
-                                param.args[0] = "";
-                            }
-                        });
-                    }
-
                     //ad
                     Class<?> videoInfoClazz = classLoader.loadClass("com.youku.upsplayer.module.VideoInfo");
 
@@ -79,6 +53,108 @@ public class MainHook implements IXposedHookLoadPackage {
                             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                                 super.afterHookedMethod(param);
                                 param.setResult(null);
+                            }
+                        });
+                    }
+
+                    //ad
+                    Class<?> cmsbase_dto_Clazz = classLoader.loadClass("com.youku.phone.cmsbase.dto");
+
+                    if (cmsbase_dto_Clazz != null) {
+                        XposedHelpers.findAndHookMethod(cmsbase_dto_Clazz, "getAd", new XC_MethodHook() {
+                            @Override
+                            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                                super.afterHookedMethod(param);
+                                param.setResult("");
+                            }
+                        });
+                    }
+
+                    //ad
+                    Class<?> dto_component_Clazz = classLoader.loadClass("com.youku.phone.cmsbase.dto.component");
+
+                    if (dto_component_Clazz != null) {
+                        XposedHelpers.findAndHookMethod(dto_component_Clazz, "getAd", new XC_MethodHook() {
+                            @Override
+                            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                                super.afterHookedMethod(param);
+                                param.setResult("");
+                            }
+                        });
+                    }
+
+                    //ad
+                    Class<?> feedadvideo_model_Clazz = classLoader.loadClass("com.alibaba.vase.petals.feedadvideo.model");
+
+                    if (feedadvideo_model_Clazz != null) {
+                        XposedHelpers.findAndHookMethod(feedadvideo_model_Clazz, "getAd", new XC_MethodHook() {
+                            @Override
+                            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                                super.afterHookedMethod(param);
+                                param.setResult("");
+                            }
+                        });
+
+                        XposedHelpers.findAndHookMethod(feedadvideo_model_Clazz, "isExposed", new XC_MethodHook() {
+                            @Override
+                            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                                super.afterHookedMethod(param);
+                                param.setResult(false);
+                            }
+                        });
+                    }
+
+                    //ad
+                    Class<?> ffeedadbottom_model_Clazz = classLoader.loadClass("com.alibaba.vase.petals.feedadbottom.model");
+
+                    if (ffeedadbottom_model_Clazz != null) {
+                        XposedHelpers.findAndHookMethod(ffeedadbottom_model_Clazz, "getAd", new XC_MethodHook() {
+                            @Override
+                            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                                super.afterHookedMethod(param);
+                                param.setResult("");
+                            }
+                        });
+                    }
+
+                    //ad
+                    Class<?> feedadvideoview_model_Clazz = classLoader.loadClass("com.alibaba.vase.petals.feedadvideoview.model");
+
+                    if (feedadvideoview_model_Clazz != null) {
+                        XposedHelpers.findAndHookMethod(feedadvideoview_model_Clazz, "getAd", new XC_MethodHook() {
+                            @Override
+                            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                                super.afterHookedMethod(param);
+                                param.setResult("");
+                            }
+                        });
+
+                        XposedHelpers.findAndHookMethod(feedadvideoview_model_Clazz, "isExposed", new XC_MethodHook() {
+                            @Override
+                            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                                super.afterHookedMethod(param);
+                                param.setResult(false);
+                            }
+                        });
+                    }
+
+                    //ad
+                    Class<?> feedadview_model_Clazz = classLoader.loadClass("com.alibaba.vase.petals.feedadview.model");
+
+                    if (feedadview_model_Clazz != null) {
+                        XposedHelpers.findAndHookMethod(feedadview_model_Clazz, "getAd", new XC_MethodHook() {
+                            @Override
+                            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                                super.afterHookedMethod(param);
+                                param.setResult("");
+                            }
+                        });
+
+                        XposedHelpers.findAndHookMethod(feedadview_model_Clazz, "isExposed", new XC_MethodHook() {
+                            @Override
+                            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                                super.afterHookedMethod(param);
+                                param.setResult(false);
                             }
                         });
                     }
