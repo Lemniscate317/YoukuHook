@@ -135,7 +135,7 @@ public class MainHook implements IXposedHookLoadPackage {
                             @Override
                             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                                 super.beforeHookedMethod(param);
-                                param.args[0] = 1;
+                                param.args[0] = 2;
                             }
                         });
 
