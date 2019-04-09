@@ -6,8 +6,8 @@ android {
         applicationId "com.l.youkuhook"
         minSdkVersion 22
         targetSdkVersion 28
-        versionCode 5
-        versionName "5.0"
+        versionCode 16
+        versionName "16.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
